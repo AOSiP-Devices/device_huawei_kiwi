@@ -10,9 +10,9 @@
     "branch"     : "nougat-mr2"
   },
   {
-    "repository" : "AOSiP/android_packages_resources_devicesettings",
+    "repository" : "LineageOS/android_packages_resources_devicesettings",
     "target_path": "packages/resources/devicesettings",
-    "branch"     : "nougat-mr2"
+    "branch"     : "cm-14.1"
   },
   {
     "repository" : "TheMuppets/proprietary_vendor_huawei",
