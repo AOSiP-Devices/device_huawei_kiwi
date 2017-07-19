@@ -1,8 +1,8 @@
 [
   {
-    "repository" : "AOSiP-Devices/kernel_huawei_kiwi",
+    "repository" : "LineageOS/android_kernel_huawei_kiwi",
     "target_path": "kernel/huawei/kiwi",
-    "branch"     : "nougat-mr2"
+    "branch"     : "cm-14.1"
   },
   {
     "repository" : "LineageOS/android_packages_resources_devicesettings",
