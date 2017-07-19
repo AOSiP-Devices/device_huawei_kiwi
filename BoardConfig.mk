@@ -78,6 +78,23 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 
+# DEX PREOPT
+# The default values for pre-opting: always preopt PIC.
+# Conditional to building on linux, as dex2oat currently does not work on darwin.
+ifeq ($(HOST_OS),linux)
+  WITH_DEXPREOPT_PIC ?= false
+  WITH_DEXPREOPT ?= false
+# For an eng build only pre-opt the boot image. This gives reasonable performance and still
+# allows a simple workflow: building in frameworks/base and syncing.
+  ifeq (eng,$(TARGET_BUILD_VARIANT))
+    WITH_DEXPREOPT_BOOT_IMG_ONLY ?= false
+  endif
+# Add mini-debug-info to the boot classpath unless explicitly asked not to.
+  ifneq (false,$(WITH_DEXPREOPT_DEBUG_INFO))
+    PRODUCT_DEX_PREOPT_BOOT_FLAGS += --generate-mini-debug-info
+  endif
+endif
+
 # Display
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
